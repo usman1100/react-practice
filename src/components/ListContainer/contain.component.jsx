@@ -1,11 +1,12 @@
 import React from "react"
-import "./contain.styles.css"
-
+import "../../bootstrap.css"
 
 export const ListContainer = (props) => {
     return(
-        <div className="container">
+        <div className="container-fluid">
+        <div className="row">
             {props.children}
         </div>
+         </div>
     )
 }
