@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import "./bootstrap.css"
+
 
 import {ListContainer} from "./components/ListContainer/contain.component"
 import {Card} from "./components/Card/card.component"
@@ -25,10 +27,9 @@ class App extends Component {
     return (
       <div className="App">
 
-        <ListContainer>
-        {
+        <ListContainer>{
           this.state.people.map(p =>(
-            <Card key={p.id}  person={p}/>
+            <Card key={p.id} person={p}/>
             ))
         }
         </ListContainer>
