@@ -1,36 +1,51 @@
 import React, { Component } from 'react';
-import './App.css';
 import "./bootstrap.css"
+import './App.css';
 
 
-import {ListContainer} from "./components/ListContainer/contain.component"
-import {Card} from "./components/Card/card.component"
+import { ListContainer } from "./components/ListContainer/contain.component"
+import { Card } from "./components/Card/card.component"
+import {SearchBox} from "./components/SearchBox/searchbox.componenet"
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      people:[]
+      people: [],
+      searchValue: ""
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => response.json())
-    .then(data => this.setState({people:data}))
+      .then(response => response.json())
+      .then(data => this.setState({ people: data }))
 
+  }
+
+  searchNames(e) {
+    this.setState({ searchValue: e.target.value })
   }
 
 
   render() {
+
+    const { people, searchValue } = this.state;
+    const filteredPeople = people.filter(person =>
+      person.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+
     return (
       <div className="App">
 
+        <SearchBox func={e => this.searchNames(e)}/>
+
+
         <ListContainer>{
-          this.state.people.map(p =>(
-            <Card key={p.id} person={p}/>
-            ))
+          filteredPeople.map(p => (
+            <Card key={p.id} person={p} />
+          ))
         }
         </ListContainer>
 
