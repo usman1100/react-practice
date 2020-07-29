@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {PrettyMessage} from "./components/PrettyMessage/msg.component"
-import {CustomMessage} from "./components/CustomMessage/custom.component"
 import {ListContainer} from "./components/ListContainer/contain.component"
+import {Card} from "./components/Card/card.component"
 
 class App extends Component {
 
   constructor() {
     super();
-    this.state =
-    {
-      people:
-        [
-          {
-            name: "Name 1",
-            age: 21
-          },
-
-          {
-            name: "Name 2",
-            age: 19
-          },
-
-          {
-            name: "Name 3",
-            age: 25
-          }
-        ],
-
-      name: "Deer"
+    this.state = {
+      people:[]
     }
   }
 
+  componentDidMount(){
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => this.setState({people:data}))
+
+  }
 
 
   render() {
@@ -40,21 +26,12 @@ class App extends Component {
       <div className="App">
 
         <ListContainer>
-          <p>Hello World</p>
-          <p>Hello World</p>
-          <p>Hello World</p>
-          <p>Hello World</p>
-        </ListContainer>
-        <PrettyMessage/>
-        <CustomMessage msg="hello" />
-
-
-
         {
-          this.state.people.map(peep =>(
-            <p key={peep.age}>{peep.name}</p>
+          this.state.people.map(p =>(
+            <Card key={p.id}  person={p}/>
             ))
         }
+        </ListContainer>
 
       </div>
     );
