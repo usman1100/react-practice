@@ -1,6 +1,5 @@
 import React from "react"
-import "../../bootstrap.css"
-import "./card.styles.css"
+import "../bootstrap.css"
 
 
 export const Card = (props) => {

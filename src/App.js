@@ -3,9 +3,9 @@ import "./bootstrap.css"
 import './App.css';
 
 
-import { ListContainer } from "./components/ListContainer/contain.component"
-import { Card } from "./components/Card/card.component"
-import {SearchBox} from "./components/SearchBox/searchbox.componenet"
+import { ListContainer } from "./components/contain.component"
+import { Card } from "./components/card.component"
+import {SearchBox} from "./components/searchbox.componenet"
 
 class App extends Component {
 
