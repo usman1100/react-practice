@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import "./bootstrap.css"
+import "./bootstrap-darkly.css"
 import './App.css';
 
 
 import { ListContainer } from "./components/contain.component"
 import { Card } from "./components/card.component"
 import { SearchBox } from "./components/searchbox.componenet"
+import { Header } from "./components/header.componenet"
 
 class App extends Component {
 
@@ -17,6 +18,8 @@ class App extends Component {
 		}
 	}
 
+	
+
 	componentDidMount() {
 		fetch("https://jsonplaceholder.typicode.com/users")
 			.then(response => response.json())
@@ -24,7 +27,7 @@ class App extends Component {
 
 	}
 
-	searchNames(e) {
+	searchNames = (e) => {
 		this.setState({ searchValue: e.target.value })
 	}
 
@@ -39,7 +42,9 @@ class App extends Component {
 		return (
 			<div className="App">
 
-				<SearchBox func={e => this.searchNames(e)} />
+				<Header>Monster Inc</Header>
+
+				<SearchBox func={this.searchNames}/>
 
 
 				<ListContainer>{
