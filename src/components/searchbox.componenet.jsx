@@ -1,5 +1,5 @@
 import React from "react";
-import "../bootstrap-darkly.css"
+import "../bootstrap-darkly.css";
 
 export const SearchBox = ({ func }) => {
     return (
